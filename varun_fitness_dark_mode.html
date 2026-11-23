@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="#0d1513" name="theme-color"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="VARUN FITNESS" name="apple-mobile-web-app-title"/>
+<title>VARUN FITNESS</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:#0d1513;
+  color:#dce4e1;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  padding-bottom:85px;
+  -webkit-font-smoothing:antialiased;
+}
+header{
+  background:linear-gradient(145deg, #11261d 0%, #0d1a14 100%);
+  color:#ffffff;
+  padding:28px 20px 24px;
+  border-radius:0 0 28px 28px;
+  border-bottom:1px solid #1e3328;
+  box-shadow:0 8px 30px rgba(0,0,0,0.5);
+  max-width:640px;
+  margin:0 auto;
+}
+.header-badge{
+  display:inline-block;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:10.5px;
+  letter-spacing:0.08em;
+  font-weight:700;
+  color:#4edea3;
+  background:rgba(78,222,163,0.1);
+  padding:3px 9px;
+  border-radius:20px;
+  margin-top:6px;
+  border:1px solid rgba(78,222,163,0.2);
+}
+h1{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:24px;
+  letter-spacing:-0.02em;
+  margin:0;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:#f0fdf4;
+}
+h2{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:20px;
+  letter-spacing:-0.01em;
+  color:#ffffff;
+  margin:18px 0 14px;
+}
+h3{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:15px;
+  color:#e6f4ed;
+  margin:0 0 6px;
+  font-weight:600;
+}
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:16px;
+}
+.stat{
+  background:rgba(21,32,28,0.75);
+  padding:13px 12px;
+  border-radius:14px;
+  border:1px solid rgba(78,222,163,0.18);
+  backdrop-filter:blur(8px);
+}
+.stat b{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:20px;
+  color:#4edea3;
+  display:block;
+  font-weight:700;
+  line-height:1.2;
+}
+.stat small{
+  color:#9cb3a8;
+  font-size:11px;
+  font-weight:500;
+  display:block;
+  margin-top:3px;
+}
+main{
+  padding:18px 16px;
+  max-width:640px;
+  margin:auto;
+}
+section{display:none}
+section.active{
+  display:block;
+  animation:fadeIn 0.2s ease-out;
+}
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(4px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.card{
+  background:#15201c;
+  border:1px solid #23352c;
+  border-radius:18px;
+  padding:17px;
+  margin-bottom:14px;
+  box-shadow:0 4px 18px rgba(0,0,0,0.35);
+  line-height:1.55;
+  color:#cfded7;
+}
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-bottom:14px;
+}
+.grid .card{
+  margin:0;
+}
+.icon-tag{
+  font-size:20px;
+  margin-bottom:8px;
+  display:inline-block;
+}
+small,.muted{
+  color:#8fa79c;
+  font-size:12px;
+}
+.progress{
+  height:10px;
+  background:#1a2b23;
+  border-radius:20px;
+  margin:12px 0 10px;
+  overflow:hidden;
+  border:1px solid #273e32;
+}
+.progress div{
+  height:100%;
+  background:linear-gradient(90deg, #10b981, #4edea3);
+  box-shadow:0 0 12px rgba(78,222,163,0.6);
+  border-radius:20px;
+  width:0;
+  transition:width 0.5s ease-in-out;
+}
+.metric-large{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:22px;
+  font-weight:700;
+  color:#4edea3;
+  display:inline-block;
+  margin:4px 0 2px;
+}
+.task{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  margin:11px 0;
+  padding:9px 12px;
+  background:#101a16;
+  border-radius:11px;
+  border:1px solid #1c2c24;
+  color:#dce4e1;
+  font-size:14px;
+  cursor:pointer;
+  transition:background 0.15s, border-color 0.15s;
+}
+.task:hover{
+  background:#14221d;
+  border-color:#2a4437;
+}
+.task input[type="checkbox"]{
+  width:18px;
+  height:18px;
+  margin:0;
+  accent-color:#10b981;
+  cursor:pointer;
+}
+button{
+  background:linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color:#002114;
+  border:0;
+  padding:12px 18px;
+  border-radius:12px;
+  font-weight:700;
+  font-family:'Space Grotesk',sans-serif;
+  cursor:pointer;
+  font-size:14px;
+  transition:transform 0.1s, box-shadow 0.15s, filter 0.15s;
+  box-shadow:0 4px 14px rgba(16,185,129,0.3);
+}
+button:active{
+  transform:scale(0.98);
+}
+button:hover{
+  filter:brightness(1.08);
+}
+input[type="number"]{
+  padding:12px 14px;
+  background:#0f1915;
+  border:1px solid #23382c;
+  color:#f0fdf4;
+  border-radius:12px;
+  width:100%;
+  margin:10px 0 12px;
+  font-size:15px;
+  font-family:inherit;
+  outline:none;
+  transition:border-color 0.2s, box-shadow 0.2s;
+}
+input[type="number"]:focus{
+  border-color:#10b981;
+  box-shadow:0 0 0 3px rgba(16,185,129,0.2);
+}
+#message{
+  margin-top:10px;
+  font-weight:600;
+  color:#4edea3;
+  font-size:13px;
+}
+#history{
+  background:#0f1915;
+  border:1px solid #1e3328;
+  border-radius:12px;
+  padding:12px 14px;
+  font-family:monospace;
+  font-size:13px;
+  color:#9cb3a8;
+  max-height:220px;
+  overflow-y:auto;
+}
+nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:rgba(13,21,19,0.92);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  display:flex;
+  justify-content:space-around;
+  padding:8px 8px 10px;
+  border-top:1px solid #1f3328;
+  z-index:999;
+  max-width:640px;
+  margin:0 auto;
+}
+nav button{
+  background:transparent;
+  color:#869c91;
+  padding:6px 12px;
+  font-size:11px;
+  border-radius:12px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:3px;
+  box-shadow:none;
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:600;
+}
+nav button.active{
+  color:#4edea3;
+  background:rgba(78,222,163,0.12);
+  box-shadow:none;
+}
+nav button .nav-icon{
+  font-size:18px;
+  line-height:1;
+}
+</style>
+</head>
+<body>
+<header>
+<h1>🌿 VARUN FITNESS</h1>
+<div class="header-badge">YOUR TRANSFORMATION STARTS TODAY</div>
+<h2 style="margin-top:14px;margin-bottom:0;">Welcome back, Varun!</h2>
+<div class="stats">
+<div class="stat"><b id="current">81.0 kg</b><small>Current weight</small></div>
+<div class="stat"><b>70.0 kg</b><small>Goal weight</small></div>
+<div class="stat"><b id="remaining">11.0 kg</b><small>Remaining</small></div>
+</div>
+</header>
+<main>
+<section class="active" id="home">
+<h2>🏠 Dashboard</h2>
+<div class="card">
+<h3>Weight loss progress</h3>
+<div class="metric-large" id="lost">0.0 kg lost</div>
+<div class="progress"><div id="bar"></div></div>
+<small>Starting: 81 kg | Target: 70 kg</small>
+</div>
+<div class="grid">
+<div class="card">
+<span class="icon-tag">🚶</span>
+<h3>30 min</h3>
+<small>Daily walking</small>
+</div>
+<div class="card">
+<span class="icon-tag">💧</span>
+<h3>2–2.5 L</h3>
+<small>Water guide</small>
+</div>
+<div class="card">
+<span class="icon-tag">🥗</span>
+<h3>90–110 g</h3>
+<small>Protein guide</small>
+</div>
+<div class="card">
+<span class="icon-tag">😴</span>
+<h3>7–9 hrs</h3>
+<small>Sleep target</small>
+</div>
+</div>
+<div class="card">
+<h3 style="margin-bottom:12px;">✅ Today's checklist</h3>
+<label class="task"><input type="checkbox"/> <span>Walking 30 minutes</span></label>
+<label class="task"><input type="checkbox"/> <span>Drink water regularly</span></label>
+<label class="task"><input type="checkbox"/> <span>Eat balanced meals</span></label>
+<label class="task"><input type="checkbox"/> <span>Complete workout</span></label>
+<label class="task"><input type="checkbox"/> <span>Sleep 7–9 hours</span></label>
+</div>
+</section>
+<section id="workout">
+<h2>🏃 Workout Plan</h2>
+<div class="card">
+<h3>Monday – Strength</h3>
+Squats 2 × 10<br/>Wall push-ups 2 × 10<br/>Plank 2 × 15 seconds
+</div>
+<div class="card">
+<h3>Tuesday – Walking</h3>
+Brisk walking 30–35 minutes.
+</div>
+<div class="card">
+<h3>Wednesday – Strength</h3>
+Step-ups 2 × 10<br/>Glute bridge 2 × 12<br/>Bird-dog 2 × 8
+</div>
+<div class="card">
+<h3>Thursday – Walking</h3>
+Walking 30 minutes + stretching.
+</div>
+<div class="card">
+<h3>Friday – Strength</h3>
+Repeat Monday's workout.
+</div>
+<div class="card">
+<h3>Saturday – Cardio</h3>
+Walking or cycling 30 minutes.
+</div>
+<div class="card">
+<h3>Sunday – Recovery</h3>
+Rest or light walking.
+</div>
+</section>
+<section id="diet">
+<h2>🥗 Diet Plan</h2>
+<div class="card">
+<h3>🌅 Breakfast</h3>
+Idli + sambar OR eggs + fruit OR sprouts/paneer.
+</div>
+<div class="card">
+<h3>🍱 Lunch</h3>
+Jowar roti or rice + dal + vegetables + curd.
+</div>
+<div class="card">
+<h3>🍎 Evening snack</h3>
+Fruit + roasted chana.
+</div>
+<div class="card">
+<h3>🌙 Dinner</h3>
+Chapati + vegetables + dal OR chicken/fish/paneer.
+</div>
+<div class="card">
+<h3>Daily starting guide</h3>
+Calories: 1,650–1,750 kcal<br/>
+Protein: 90–110 g
+<p class="muted" style="margin-top:10px;margin-bottom:0;">These are estimates, not medical prescriptions. Adjust according to your energy and weight trend. Aim for gradual weight loss.</p>
+</div>
+</section>
+<section id="progress">
+<h2>📈 Weight Tracker</h2>
+<div class="card">
+<h3>Enter your weight</h3>
+<input id="weight" placeholder="Enter weight in kg (e.g. 80.5)" step="0.1" type="number"/>
+<button onclick="saveWeight()">Save Weight</button>
+<p id="message"></p>
+</div>
+<div class="card">
+<h3>Weight history</h3>
+<div id="history">No records yet.</div>
+</div>
+</section>
+<section id="settings">
+<h2>⚙️ Settings</h2>
+<div class="card">
+<h3 style="color:#4edea3;">VARUN FITNESS</h3>
+Male | Age: 25<br/>
+Height: 166.6 cm<br/>
+Starting weight: 81 kg<br/>
+Target weight: 70 kg
+</div>
+<div class="card">
+<h3>ಕನ್ನಡ ಸೂಚನೆ</h3>
+ನಿಮ್ಮ ಆರೋಗ್ಯಕರ ತೂಕ ಇಳಿಸುವ ಪ್ರಯಾಣವನ್ನು ಪ್ರತಿದಿನ ಮುಂದುವರಿಸಿ.
+</div>
+<div class="card">
+<p class="muted" style="margin-top:0;margin-bottom:12px;">Your records are stored in this browser on this device. Clearing browser data may erase them.</p>
+<button onclick="resetData()" style="background:#2a1618;color:#ffb4ab;border:1px solid #5c1e22;box-shadow:none;">Reset all data</button>
+</div>
+</section>
+</main>
+<nav id="bottom-nav">
+<button class="active" id="btn-home" onclick="show('home')"><span class="nav-icon">🏠</span><span>Home</span></button>
+<button id="btn-workout" onclick="show('workout')"><span class="nav-icon">🏃</span><span>Workout</span></button>
+<button id="btn-diet" onclick="show('diet')"><span class="nav-icon">🥗</span><span>Diet</span></button>
+<button id="btn-progress" onclick="show('progress')"><span class="nav-icon">📈</span><span>Progress</span></button>
+<button id="btn-settings" onclick="show('settings')"><span class="nav-icon">⚙️</span><span>Settings</span></button>
+</nav>
+<script>
+let records=JSON.parse(localStorage.getItem("varunWeights")||"[]");
+function show(id){
+ document.querySelectorAll("main section").forEach(s=>s.classList.remove("active"));
+ const target=document.getElementById(id);
+ if(target) target.classList.add("active");
+ document.querySelectorAll("#bottom-nav button").forEach(b=>b.classList.remove("active"));
+ const activeBtn=document.getElementById("btn-"+id);
+ if(activeBtn) activeBtn.classList.add("active");
+ window.scrollTo(0,0);
+}
+function update(){
+ let current=records.length?Number(records[records.length-1]):81;
+ let lost=Math.max(0,81-current);
+ let remaining=Math.max(0,current-70);
+ let percent=Math.min(100,Math.max(0,lost/11*100));
+ document.getElementById("current").textContent=current.toFixed(1)+" kg";
+ document.getElementById("remaining").textContent=remaining.toFixed(1)+" kg";
+ document.getElementById("lost").textContent=lost.toFixed(1)+" kg lost";
+ document.getElementById("bar").style.width=percent+"%";
+ document.getElementById("history").innerHTML=
+ records.length?records.map((w,i)=>`<div style="padding:4px 0;border-bottom:1px solid #1a2922;">${i+1}. <span style="color:#4edea3;font-weight:600;">${Number(w).toFixed(1)} kg</span></div>`).join(""):"No records yet.";
+}
+function saveWeight(){
+ let value=Number(document.getElementById("weight").value);
+ if(!value||value<30||value>250){
+  document.getElementById("message").textContent="Enter a valid weight (30–250 kg).";
+  document.getElementById("message").style.color="#ffb4ab";
+  return;
+ }
+ records.push(value);
+ localStorage.setItem("varunWeights",JSON.stringify(records));
+ document.getElementById("weight").value="";
+ document.getElementById("message").textContent="Weight saved successfully!";
+ document.getElementById("message").style.color="#4edea3";
+ update();
+}
+function resetData(){
+ if(confirm("Delete all saved weight records?")){
+  records=[];
+  localStorage.removeItem("varunWeights");
+  update();
+ }
+}
+update();
+</script>
+</body></html>
